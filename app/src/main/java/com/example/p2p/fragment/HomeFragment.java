@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.p2p.R;
+import com.example.p2p.utils.UiUtils;
 
 /**
  * Created by chenyuelun on 2017/6/20.
@@ -23,7 +24,8 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.e(TAG,"布局初始化");
-        return View.inflate(getActivity(), R.layout.fragment_home,null);
+//        return View.inflate(getActivity(), R.layout.fragment_home,null);
+        return UiUtils.inflate(R.layout.fragment_home);
     }
 
     @Override

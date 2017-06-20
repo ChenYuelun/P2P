@@ -1,11 +1,11 @@
 package com.example.p2p.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
@@ -97,5 +97,11 @@ public class SplashActivity extends AppCompatActivity {
         return "1.0";
     }
 
-
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK){
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

@@ -10,6 +10,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.p2p.R;
+import com.example.p2p.common.AppManager;
 import com.example.p2p.fragment.HomeFragment;
 import com.example.p2p.fragment.InvestFragment;
 import com.example.p2p.fragment.MoreFragment;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AppManager.getInstance().addActivity(this);
         initView();
         initData();
         initListener();
@@ -136,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
             if (!isBack) {
                 isBack = true;
                 Toast.makeText(MainActivity.this, "再按一次退出软件", Toast.LENGTH_SHORT).show();
-                new Timer().schedule(new TimerTask() {
+                new Timer().schedule(   new TimerTask() {
                     @Override
                     public void run() {
                         isBack = false;
@@ -147,5 +149,11 @@ public class MainActivity extends AppCompatActivity {
 
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppManager.getInstance().removeActivity(this);
     }
 }

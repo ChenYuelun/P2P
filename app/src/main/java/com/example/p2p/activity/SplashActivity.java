@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.p2p.R;
+import com.example.p2p.common.AppManager;
+import com.example.p2p.utils.UiUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,6 +27,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        AppManager.getInstance().addActivity(this);
         initView();
         initData();
         initListener();
@@ -81,7 +84,8 @@ public class SplashActivity extends AppCompatActivity {
     private void initView() {
         iv_app_icon = (ImageView)findViewById(R.id.iv_app_icon);
         tv_version_code = (TextView)findViewById(R.id.tv_version_code);
-        tv_version_code.setText(getVersionCode());
+        tv_version_code.setText(UiUtils.getVersionString(
+                R.string.app_vesion,getVersionCode()));
     }
 
     private String getVersionCode() {
@@ -103,5 +107,11 @@ public class SplashActivity extends AppCompatActivity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppManager.getInstance().removeActivity(this);
     }
 }

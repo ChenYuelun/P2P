@@ -9,26 +9,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.p2p.base.BaseFragment;
+
 import static android.os.Build.VERSION_CODES.M;
 
 /**
  * Created by chenyuelun on 2017/6/20.
  */
 
-public class PropertyFragment extends Fragment {
-    private String TAG = PropertyFragment.class.getSimpleName();
-    @Nullable
+public class PropertyFragment extends BaseFragment {
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.e(TAG,"布局初始化");
-        TextView textView = new TextView(getActivity());
-        textView.setText("PropertyFragment");
-        return textView;
+    protected void initData() {
+
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
+    protected int getLayoutId() {
+        return 0;
     }
 }
